@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>ひといき — タイマー</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <a class="brand" href="./index.html" aria-label="ひといき ホーム"><img class="brand-icon" src="images/timer-icon.jpg" width="44" height="44" alt=""> ひといき<span class="brand-en">HITOIKI</span></a>
+      <span class="header-note">自分のペースで、ひとつずつ。</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow"><span></span> A LITTLE TIME FOR YOU</p>
+      <h1>いま、この時間に集中。</h1>
+      <p>やることにも、ひと休みにも。あなたのためのタイマー。</p>
+    </section>
+
+    <section class="timer-card" aria-label="タイマー">
+      <div class="timer-panel">
+        <div class="panel-top"><span class="section-label">YOUR TIMER</span><span id="state" class="state">準備できました</span></div>
+        <div class="dial">
+          <svg viewBox="0 0 300 300" aria-hidden="true"><circle class="ring-track" cx="150" cy="150" r="134"/><circle id="progress" class="ring-progress" cx="150" cy="150" r="134" pathLength="100"/></svg>
+          <div class="dial-content"><span id="dial-label" class="dial-label">残り時間</span><div id="time" class="time" role="timer" aria-label="残り時間">25:00</div><span id="end-time" class="end-time">小さな集中を、ここから。</span></div>
+        </div>
+        <div class="controls"><button id="start" class="primary" type="button"><span aria-hidden="true">▶</span> スタート</button><button id="reset" class="reset" type="button" aria-label="タイマーをリセット" title="リセット">↺</button></div>
+        <p id="announcement" class="timer-hint" role="status" aria-live="polite">準備ができたら、はじめましょう。</p>
+      </div>
+
+      <div class="settings-panel">
+        <div class="settings-heading"><span class="section-label">MAKE IT YOURS</span><h2>時間をえらぶ</h2><p>今日のペースに合わせて。</p></div>
+        <div class="presets" aria-label="時間のプリセット">
+          <button type="button" class="preset" data-minutes="5" aria-pressed="false"><span class="preset-icon" aria-hidden="true">☕</span><span><strong>ひと休み</strong><small>気持ちをリフレッシュ</small></span><span class="preset-time">5 <small>分</small></span></button>
+          <button type="button" class="preset" data-minutes="15" aria-pressed="false"><span class="preset-icon" aria-hidden="true">◇</span><span><strong>ちょっと集中</strong><small>小さなタスクをひとつ</small></span><span class="preset-time">15 <small>分</small></span></button>
+          <button type="button" class="preset selected" data-minutes="25" aria-pressed="true"><span class="preset-icon" aria-hidden="true">✦</span><span><strong>じっくり集中</strong><small>目の前のことに向き合う</small></span><span class="preset-time">25 <small>分</small></span></button>
+        </div>
+        <form id="custom-form" novalidate>
+          <label class="custom-label" for="minutes">お好みの時間で</label>
+          <div class="custom-row"><div class="input-wrap"><input id="minutes" type="number" min="0" max="999" step="1" value="25" inputmode="numeric" aria-label="分" aria-describedby="input-error"><span>分</span></div><span class="colon">:</span><div class="input-wrap"><input id="seconds" type="number" min="0" max="59" step="1" value="0" inputmode="numeric" aria-label="秒" aria-describedby="input-error"><span>秒</span></div><button id="apply" class="apply" type="submit">設定</button></div>
+          <p id="input-error" class="input-error" role="alert"></p>
+        </form>
+        <div class="sound-row"><div><label for="sound">終了音</label><p>時間になったら音でお知らせ</p></div><label class="switch"><input id="sound" type="checkbox" checked aria-label="終了音を有効にする"><span class="switch-track"></span></label></div>
+      </div>
+    </section>
+    <footer><span aria-hidden="true">✳</span> 集中のあとは、ひと息つくのも忘れずに。</footer>
+  </main>
+</body>
+</html>
